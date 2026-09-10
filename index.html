@@ -281,7 +281,7 @@
 
     <script>
         // PENTING: Ganti URL di bawah ini dengan URL Web App dari Google Apps Script Anda!
-        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzHCSVyVIwOirU0AazsNVnPfgpJe6NKhtcCK4tkivyI26EmEcpWH3VnXwvahTi0BpE9Kw/exec';
         
         let formData = {};
         
@@ -356,22 +356,25 @@
 
                 try {
                     // Cek jika URL masih bawaan
-                    if(scriptURL === 'https://script.google.com/macros/s/AKfycbzHCSVyVIwOirU0AazsNVnPfgpJe6NKhtcCK4tkivyI26EmEcpWH3VnXwvahTi0BpE9Kw/exec') {
+                    if(scriptURL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
                          throw new Error("URL Apps Script belum diatur. Silakan ganti variabel scriptURL di dalam kode.");
                     }
 
-                    // Melakukan pengiriman ke URL Apps Script
+                    // MENGGUNAKAN FORMDATA (Metode Paling Stabil untuk Google Apps Script)
+                    const formKirim = new FormData();
+                    formKirim.append("namaLengkap", formData.namaLengkap);
+                    formKirim.append("instansi", formData.instansi);
+                    formKirim.append("pemahamanParadigma", formData.pemahamanParadigma);
+                    formKirim.append("rencanaImplementasi", formData.rencanaImplementasi);
+                    formKirim.append("kesiapanTeknologi", formData.kesiapanTeknologi);
+                    formKirim.append("hambatanAsesmen", formData.hambatanAsesmen);
+
+                    // Mengirim tanpa headers khusus atau mode no-cors agar berjalan natural
                     await fetch(scriptURL, {
                         method: 'POST',
-                        mode: 'no-cors', // Tambahan PENTING: Melewati blokir keamanan/redirect browser
-                        body: JSON.stringify(formData),
-                        headers: {
-                            'Content-Type': 'text/plain;charset=utf-8', 
-                        }
+                        mode: 'no-cors',
+                        body: formKirim
                     });
-                    
-                    // Karena menggunakan 'no-cors', kita tidak bisa membaca response JSON dari Google.
-                    // Jika proses fetch di atas selesai tanpa memicu 'catch' error jaringan, kita anggap berhasil.
                     
                     document.getElementById('page2').classList.remove('active');
                     document.getElementById('page3').classList.add('active');
