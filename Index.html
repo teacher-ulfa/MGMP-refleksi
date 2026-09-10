@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refleksi Kegiatan MGMP PAI SMA Sidoarjo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom styles for radio buttons and textareas */
+        input[type="radio"]:checked + label {
+            background-color: #10b981; /* Emerald 500 */
+            color: white;
+            border-color: #10b981;
+        }
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-3xl w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl relative overflow-hidden">
+        
+        <!-- Header Section (Always Visible) -->
+        <div class="text-center pb-6 border-b border-gray-200">
+            <div class="separator" style="clear: both; margin-bottom: 1rem;">
+                <a href="#" style="display: block; text-align: center; pointer-events: none;">
+                    <!-- Fallback if the provided logo URL fails -->
+                    <img alt="Logo MGMP PAI" border="0" width="150" class="mx-auto"
+                         src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_STv9s6tsI5zoE-17E_BSZhoRSmbabPqwfYlimBAQho6fN44ReE8ygNNXIH_Ryw0Rp9YREMeLrOzWMuXlb-ZoA-B5RG56aGdmkgBkpnEsfEfxLJz2wzhe6dVAmkoZBBCYkpLvIy6x86R2yeNS6JSRYnFC2Q49obe2TWxXCt-H8e9E4zVjg1GNs-OePk7c/s200/LOGO%20MGMP%20PAI.png" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/150x150/10b981/ffffff?text=Logo+MGMP+PAI';">
+                </a>
+            </div>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">MGMP PAI SMA Kabupaten Sidoarjo</h1>
+            <p class="mt-2 text-sm text-gray-500">Refleksi Kegiatan: Asesmen Pembelajaran Pendidikan Agama Islam</p>
+        </div>
+
+        <!-- Page 1: Identitas Diri -->
+        <div id="page1" class="page active">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 text-center">Data Peserta</h2>
+            <form id="form-identitas" class="space-y-6">
+                <div>
+                    <label for="nama_lengkap" class="block text-sm font-medium text-gray-700">Nama Lengkap beserta Gelar</label>
+                    <div class="mt-1">
+                        <input type="text" id="nama_lengkap" name="nama_lengkap" required
+                            class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition duration-150 ease-in-out"
+                            placeholder="Contoh: Ahmad Abdullah, S.Pd.I., M.Pd.">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="instansi" class="block text-sm font-medium text-gray-700">Instansi / Asal Sekolah</label>
+                    <div class="mt-1">
+                        <input type="text" id="instansi" name="instansi" required
+                            class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition duration-150 ease-in-out"
+                            placeholder="Contoh: SMA Negeri 1 Sidoarjo">
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-end">
+                    <button type="button" onclick="nextPage(1, 2)"
+                        class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-150 ease-in-out">
+                        Mulai Refleksi <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Page 2: Pertanyaan Refleksi -->
+        <div id="page2" class="page">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 text-center">Refleksi Materi Asesmen Pembelajaran PAI</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-r-lg">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700">
+                            Berdasarkan materi "Pendekatan Praktis Pembelajaran Mendalam (Deep Learning) untuk Guru SMA" oleh Ulfatul Husna, S.Ag., M.Pd., silakan isi refleksi berikut.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="form-refleksi" class="space-y-8">
+                <!-- Q1: Pemahaman Paradigma Baru -->
+                <div class="space-y-3">
+                    <label class="block text-base font-medium text-gray-900">
+                        1. Setelah mengikuti paparan, sejauh mana pemahaman Anda tentang perbedaan paradigma lama (orientasi nilai akhir) dengan paradigma baru asesmen (penguatan proses, berkeadilan, objektif, edukatif)?
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                        <div>
+                            <input type="radio" id="p1_a" name="q_paradigma" value="Sangat Memahami" class="sr-only" required>
+                            <label for="p1_a" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Sangat Memahami
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="p1_b" name="q_paradigma" value="Memahami" class="sr-only">
+                            <label for="p1_b" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Memahami
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="p1_c" name="q_paradigma" value="Cukup Memahami" class="sr-only">
+                            <label for="p1_c" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Cukup Memahami
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="p1_d" name="q_paradigma" value="Kurang Memahami" class="sr-only">
+                            <label for="p1_d" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Kurang Memahami
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2: Implementasi Level Abstraksi -->
+                <div class="space-y-3">
+                    <label for="q_implementasi" class="block text-base font-medium text-gray-900">
+                        2. Materi menekankan asesmen pada level "Merefleksi" (HOTS), seperti menginternalisasi nilai moderasi beragama. Bagaimana rencana nyata Anda untuk menerapkan hal ini di kelas?
+                    </label>
+                    <textarea id="q_implementasi" name="q_implementasi" rows="4" required
+                        class="appearance-none block w-full p-4 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition duration-150 ease-in-out"
+                        placeholder="Tuliskan rencana singkat Anda di sini..."></textarea>
+                </div>
+
+                <!-- Q3: Asesmen Holistik -->
+                <div class="space-y-3">
+                    <label class="block text-base font-medium text-gray-900">
+                        3. Seberapa siap Anda mengintegrasikan asesmen holistik PAI (Kognitif, Psikomotorik, Afektif) menggunakan teknologi (seperti Canva, Padlet, atau Jurnal Refleksi Digital) dalam pembelajaran?
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                        <div>
+                            <input type="radio" id="p3_a" name="q_kesiapan_tech" value="Sangat Siap" class="sr-only" required>
+                            <label for="p3_a" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Sangat Siap
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="p3_b" name="q_kesiapan_tech" value="Siap" class="sr-only">
+                            <label for="p3_b" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Siap
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="p3_c" name="q_kesiapan_tech" value="Butuh Bimbingan" class="sr-only">
+                            <label for="p3_c" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Butuh Bimbingan
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="p3_d" name="q_kesiapan_tech" value="Belum Siap" class="sr-only">
+                            <label for="p3_d" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors text-sm text-center font-medium">
+                                Belum Siap
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4: Kesulitan Terbesar -->
+                <div class="space-y-3">
+                    <label for="q_hambatan" class="block text-base font-medium text-gray-900">
+                        4. Apa hambatan terbesar yang mungkin Anda hadapi saat merancang asesmen sumatif berupa esai reflektif mandiri (sikap) atau proyek kolaboratif?
+                    </label>
+                    <textarea id="q_hambatan" name="q_hambatan" rows="3" required
+                        class="appearance-none block w-full p-4 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition duration-150 ease-in-out"
+                        placeholder="Contoh: Terbatasnya waktu penilaian, kesulitan menyusun rubrik, dll..."></textarea>
+                </div>
+
+                <div class="pt-6 flex justify-between border-t border-gray-200">
+                    <button type="button" onclick="nextPage(2, 1)"
+                        class="inline-flex justify-center py-3 px-6 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-150 ease-in-out">
+                        <svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg> Kembali
+                    </button>
+                    <button type="submit" id="submitBtn"
+                        class="inline-flex justify-center items-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-150 ease-in-out">
+                        Kirim Refleksi
+                        <svg id="loadingIcon" class="hidden animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Page 3: Sukses -->
+        <div id="page3" class="page text-center py-10">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-100 mb-6">
+                <svg class="h-10 w-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Terima Kasih!</h2>
+            <p class="text-gray-600 mb-6">Refleksi Anda telah berhasil dikirimkan.</p>
+            <p class="text-sm text-gray-500 italic px-6">
+                "Asesmen PAI yang autentik tidak mencari kelemahan murid, melainkan memetakan jalan agar setiap murid mampu menjadi teladan Rahmatan lil 'Alamin."
+            </p>
+            <div class="mt-8">
+                 <button type="button" onclick="resetForm()"
+                        class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-150 ease-in-out">
+                        Isi Refleksi Baru
+                </button>
+            </div>
+        </div>
+
+        <!-- Error State Component -->
+        <div id="errorState" class="hidden mt-4 bg-red-50 border-l-4 border-red-400 p-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-red-700" id="errorMessage">
+                        Terjadi kesalahan saat menyimpan data.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section (Always Visible) -->
+        <div class="mt-12 pt-6 border-t border-gray-200 text-center text-xs text-gray-400">
+            <p>Disusun oleh: Ulfatul Husna, S.Ag., M.Pd.</p>
+            <p class="mt-1">© 2026 MGMP PAI SMA Kabupaten Sidoarjo. Dipublikasikan via GitHub Pages.</p>
+        </div>
+
+    </div>
+
+    <!-- Custom Modal for Notifications -->
+    <div id="customModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                <div>
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100">
+                        <svg class="h-6 w-6 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Perhatian</h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500" id="modal-message">Harap lengkapi semua isian sebelum melanjutkan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 sm:mt-6">
+                    <button type="button" onclick="closeModal()" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-600 text-base font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:text-sm">
+                        Mengerti
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // PENTING: Ganti URL di bawah ini dengan URL Web App dari Google Apps Script Anda!
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        
+        let formData = {};
+        
+        window.nextPage = function(currentId, nextId) {
+            // Validasi di Halaman 1
+            if (currentId === 1) {
+                const nama = document.getElementById('nama_lengkap').value.trim();
+                const instansi = document.getElementById('instansi').value.trim();
+                
+                if (!nama || !instansi) {
+                    showModal("Mohon isi Nama Lengkap dan Instansi terlebih dahulu.");
+                    return;
+                }
+                
+                formData.namaLengkap = nama;
+                formData.instansi = instansi;
+            }
+
+            document.getElementById(`page${currentId}`).classList.remove('active');
+            document.getElementById(`page${nextId}`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.resetForm = function() {
+            document.getElementById('form-identitas').reset();
+            document.getElementById('form-refleksi').reset();
+            formData = {};
+            document.getElementById('page3').classList.remove('active');
+            document.getElementById('page1').classList.add('active');
+        }
+
+        window.showModal = function(message) {
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        window.closeModal = function() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const formRefleksi = document.getElementById('form-refleksi');
+            const errorState = document.getElementById('errorState');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            formRefleksi.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const q1 = document.querySelector('input[name="q_paradigma"]:checked');
+                const q3 = document.querySelector('input[name="q_kesiapan_tech"]:checked');
+                const q2 = document.getElementById('q_implementasi').value.trim();
+                const q4 = document.getElementById('q_hambatan').value.trim();
+
+                if (!q1 || !q3 || !q2 || !q4) {
+                    showModal("Mohon lengkapi semua pertanyaan pilihan dan isian.");
+                    return;
+                }
+
+                // Mengumpulkan semua data
+                formData.pemahamanParadigma = q1.value;
+                formData.rencanaImplementasi = q2;
+                formData.kesiapanTeknologi = q3.value;
+                formData.hambatanAsesmen = q4;
+
+                // Tampilan loading
+                const submitBtn = document.getElementById('submitBtn');
+                const loadingIcon = document.getElementById('loadingIcon');
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                loadingIcon.classList.remove('hidden');
+                errorState.classList.add('hidden');
+
+                try {
+                    // Cek jika URL masih bawaan
+                    if(scriptURL === 'https://script.google.com/macros/s/AKfycbxrqqQpxkAXPHIJ9d9xOT3TsI1rph9Bgyq9HaOazkevJklE-FbT_r7X1d1JyX6AbqWn2g/exec') {
+                         throw new Error("URL Apps Script belum diatur. Silakan ganti variabel scriptURL di dalam kode.");
+                    }
+
+                    // Melakukan pengiriman ke URL Apps Script
+                    const response = await fetch(scriptURL, {
+                        method: 'POST',
+                        body: JSON.stringify(formData),
+                        // Menggunakan text/plain untuk menghindari pemblokiran pre-flight CORS di Apps Script
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8', 
+                        }
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.result === 'success') {
+                        // Jika berhasil pindah ke Halaman 3 (Sukses)
+                        document.getElementById('page2').classList.remove('active');
+                        document.getElementById('page3').classList.add('active');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        throw new Error(result.error || "Gagal menyimpan data ke Spreadsheet");
+                    }
+                    
+                } catch (error) {
+                    console.error("Error submitting form:", error);
+                    errorMessage.innerText = "Gagal mengirim data. " + error.message;
+                    errorState.classList.remove('hidden');
+                } finally {
+                    // Mengembalikan tampilan tombol
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    loadingIcon.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
