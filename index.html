@@ -375,13 +375,29 @@
                         body: formKirim
                     });
                     
+                    // MEMBACA BALASAN DARI GOOGLE
+                    const responseText = await response.text();
+                    let responseData;
+                    
+                    try {
+                        responseData = JSON.parse(responseText);
+                    } catch (e) {
+                        throw new Error("Error Jaringan/URL. Pastikan Anda sudah klik Deployment Baru.");
+                    }
+
+                    // JIKA GOOGLE MENOLAK (Ada Error di Script)
+                    if (responseData.result === "error") {
+                        throw new Error("Ditolak Google: " + responseData.error);
+                    }
+                    
                     document.getElementById('page2').classList.remove('active');
                     document.getElementById('page3').classList.add('active');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     
                 } catch (error) {
                     console.error("Error submitting form:", error);
-                    errorMessage.innerText = "Gagal mengirim data. Pastikan internet stabil.";
+                    // MENAMPILKAN ERROR ASLI KE LAYAR
+                    errorMessage.innerText = error.message;
                     errorState.classList.remove('hidden');
                 } finally {
                     // Mengembalikan tampilan tombol
