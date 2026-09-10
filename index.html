@@ -360,8 +360,8 @@
                          throw new Error("URL Apps Script belum diatur. Silakan ganti variabel scriptURL di dalam kode.");
                     }
 
-                    // MENGGUNAKAN FORMDATA (Metode Paling Stabil untuk Google Apps Script)
-                    const formKirim = new FormData();
+                    // MENGGUNAKAN URLSearchParams (Paling Kompatibel dengan e.parameter Apps Script)
+                    const formKirim = new URLSearchParams();
                     formKirim.append("namaLengkap", formData.namaLengkap);
                     formKirim.append("instansi", formData.instansi);
                     formKirim.append("pemahamanParadigma", formData.pemahamanParadigma);
@@ -369,10 +369,9 @@
                     formKirim.append("kesiapanTeknologi", formData.kesiapanTeknologi);
                     formKirim.append("hambatanAsesmen", formData.hambatanAsesmen);
 
-                    // Mengirim tanpa headers khusus atau mode no-cors agar berjalan natural
-                    await fetch(scriptURL, {
+                    // Mengirim data (tanpa mode no-cors agar error asli terlihat)
+                    const response = await fetch(scriptURL, {
                         method: 'POST',
-                        mode: 'no-cors',
                         body: formKirim
                     });
                     
@@ -382,7 +381,7 @@
                     
                 } catch (error) {
                     console.error("Error submitting form:", error);
-                    errorMessage.innerText = "Gagal mengirim data. " + error.message;
+                    errorMessage.innerText = "Gagal mengirim data. Pastikan internet stabil.";
                     errorState.classList.remove('hidden');
                 } finally {
                     // Mengembalikan tampilan tombol
