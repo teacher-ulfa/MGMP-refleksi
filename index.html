@@ -361,25 +361,21 @@
                     }
 
                     // Melakukan pengiriman ke URL Apps Script
-                    const response = await fetch(scriptURL, {
+                    await fetch(scriptURL, {
                         method: 'POST',
+                        mode: 'no-cors', // Tambahan PENTING: Melewati blokir keamanan/redirect browser
                         body: JSON.stringify(formData),
-                        // Menggunakan text/plain untuk menghindari pemblokiran pre-flight CORS di Apps Script
                         headers: {
                             'Content-Type': 'text/plain;charset=utf-8', 
                         }
                     });
                     
-                    const result = await response.json();
+                    // Karena menggunakan 'no-cors', kita tidak bisa membaca response JSON dari Google.
+                    // Jika proses fetch di atas selesai tanpa memicu 'catch' error jaringan, kita anggap berhasil.
                     
-                    if (result.result === 'success') {
-                        // Jika berhasil pindah ke Halaman 3 (Sukses)
-                        document.getElementById('page2').classList.remove('active');
-                        document.getElementById('page3').classList.add('active');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        throw new Error(result.error || "Gagal menyimpan data ke Spreadsheet");
-                    }
+                    document.getElementById('page2').classList.remove('active');
+                    document.getElementById('page3').classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     
                 } catch (error) {
                     console.error("Error submitting form:", error);
